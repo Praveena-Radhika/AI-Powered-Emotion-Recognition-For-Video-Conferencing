@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zoom Dashboard Approximation</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Basic reset and font */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        /* Layout using Flexbox */
+        .dashboard-container {
+            display: flex;
+            height: 100vh; /* Make sure the container takes full viewport height */
+        }
+        nav {
+            width: 220px;
+            background-color: #283593;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav li {
+            margin-bottom: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            display: flex; /* Use Flexbox for icon and text alignment */
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #3949ab;
+        }
+        nav a .material-icons {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto; /* Add scroll if content overflows */
+        }
+        /* Header styles */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-section {
+            display: flex;
+            align-items: center;
+        }
+        .profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd; /* Placeholder */
+            margin-right: 10px;
+        }
+        .profile-details {
+            margin-right: 20px; /* Add spacing between profile and button */
+        }
+        .profile-details h2 {
+            margin: 0 0 5px 0;
+            color: #283593;
+        }
+        .profile-details p {
+            margin: 0;
+            font-size: 14px;
+            color: #777;
+        }
+        .manage-plan-button {
+            background-color: #3949ab;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .manage-plan-button:hover {
+            background-color: #283593;
+        }
+        /* Main content layout */
+        .main-content {
+            display: flex;
+            gap: 20px; /* Use gap for spacing between panels */
+        }
+        .left-panel, .right-panel {
+            flex: 1; /* Equal width panels */
+            display: flex;
+            flex-direction: column; /* Panels stack vertically */
+            gap: 20px; /* Spacing between panels */
+        }
+        .panel {
+            background: linear-gradient(to bottom right, #42a5f5, #7986cb);
+            color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Panels take available space */
+            transition: transform 0.3s;
+        }
+        .panel:hover {
+            transform: translateY(-5px);
+        }
+        .panel-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        /* Add more specific styles for each section as needed */
+        /* Example styles for "Enhance your meetings" */
+        .enhance-meetings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+            gap: 10px;
+        }
+        .enhance-meetings-item {
+            text-align: center;
+        }
+        .enhance-meetings-item img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* Utility classes for icons and other elements */
+        .icon {
+            font-family: 'Material Icons';
+            font-size: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        /* Responsive adjustments (basic example) */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column; /* Stack panels vertically on smaller screens */
+            }
+            .left-panel, .right-panel {
+                flex: auto; /* Panels take full width */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    <nav>
+        <ul>
+            <li><a href="#"><span class="material-icons">home</span>Home</a></li>
+            <li><a href="#"><span class="material-icons">person</span>Profile</a></li>
+            <li><a href="join_meeting.html"><span class="material-icons">videocam</span>Meetings</a></li>
+            <li><a href="#"><span class="material-icons">record_voice_over</span>Webinars</a></li>
+            <li><a href="#"><span class="material-icons">event</span>Events & Sessions</a></li>
+            <li><a href="#"><span class="material-icons">contacts</span>Personal Contacts</a></li>
+            <li><a href="#"><span class="material-icons">devices</span>Personal Devices</a></li>
+            <li><a href="#"><span class="material-icons">draw</span>Whiteboards</a></li>
+            <li><a href="#"><span class="material-icons">note</span>Notes</a></li>
+            <li><a href="#"><span class="material-icons">mic</span>Recording</a></li>
+            <li><a href="#"><span class="material-icons">today</span>Scheduler</a></li>
+            <li><a href="#"><span class="material-icons">security</span>Data & Privacy</a></li>
+            <li><a href="#"><span class="material-icons">flag</span>Reports</a></li>
+            <li><a href="#"><span class="material-icons">gavel</span>Plans and Billing</a></li>
+            <li><a href="#"><span class="material-icons">group</span>User Management</a></li>
+            <li><a href="#"><span class="material-icons">meeting_room</span>Room Management</a></li>
+            <li><a href="#"><span class="material-icons">business_center</span>Workspace Management</a></li>
+            <li><a href="#"><span class="material-icons">manage_accounts</span>Account Management</a></li>
+            <li><a href="#"><span class="material-icons">settings</span>Advanced</a></li>
+            <li><a href="#"><span class="material-icons">school</span>Zoom Learning Center</a></li>
+            <li><a href="#"><span class="material-icons">videocam</span>Video Tutorials</a></li>
+            <li><a href="#"><span class="material-icons">help</span>Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="dashboard-header">
+            <div class="profile-section">
+                <div class="profile-image"></div>
+                <div class="profile-details">
+                    <h2>Dharshini V</h2>
+                    <p>Plan: Workplace Basic</p>
+                    <p>Job Title: Add</p>
+                </div>
+                <button class="manage-plan-button">Manage Plan</button>
+            </div>
+            <div>
+                <button class="view-plan-button">View Plan Details</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="panel">
+                    <div class="panel-title">Enhance your meetings</div>
+                    <div class="enhance-meetings-grid">
+                        <div class="enhance-meetings-item">
+                            <img src="https://via.placeholder.com/200x150" alt="Virtual Backgrounds">
+                            <p>Virtual Backgrounds</p>
+                            <p>Download hi-res images to elevate your Zoom meeting.</p>
+                        </div>
+                        <div class="enhance-meetings-item">
+                            <img src="https://via.placeholder.com/200x150" alt="Presentation Tools">
+                            <p>Presentation Tools</p>
+                            <p>Use advanced tools to enhance your presentations.</p>
+                        </div>
+                        <div class="enhance-meetings-item">
+                            <img src="https://via.placeholder.com/200x150" alt="Meeting Controls">
+                            <p>Meeting Controls</p>
+                            <p>Manage and control your meetings effectively.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class

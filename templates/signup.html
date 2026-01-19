@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #428ef1, #673ab7);
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        .left {
+            padding: 20px;
+            width: 300px;
+        }
+        .left h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .left ul {
+            list-style: none;
+            padding: 0;
+        }
+        .left ul li {
+            margin-bottom: 10px;
+        }
+        .right {
+            padding: 20px;
+            width: 300px;
+        }
+        .right h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .right input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .right button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .right .options {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .right .options button {
+            width: 48%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="left">
+                <h2>Why Zoom?</h2>
+                <ul>
+                    <li>One consistent enterprise experience</li>
+                    <li>Engineered & optimized to work reliably</li>
+                    <li>Up to 1,000 video participants & 49 videos on screen</li>
+                    <li>Easy-to-use, buy, deploy, and manage</li>
+                </ul>
+            </div>
+            <div class="right">
+                <h2>Sign Up</h2>
+                <div class="error" id="error"></div>
+                <input type="email" id="email" placeholder="Email Address">
+                <input type="password" id="password" placeholder="Password">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password">
+                <button id="signupButton">Sign Up</button> <!-- Redirects to dashboard.html -->
+                <div class="options">
+                    <button id="googleButton">Sign Up with Google</button>
+                    <button id="facebookButton">Sign Up with Facebook</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("signupButton").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const errorDiv = document.getElementById("error");
+
+            // Clear previous error messages
+            errorDiv.innerHTML = "";
+
+            // Email validation
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                errorDiv.innerHTML += "<p>Invalid email address.</p>";
+                return;
+            }
+
+            // Password validation
+            if (password.length < 6) {
+                errorDiv.innerHTML += "<p>Password must be at least 6 characters long.</p>";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                errorDiv.innerHTML += "<p>Passwords do not match.</p>";
+                return;
+            }
+
+            // If all validations pass, redirect to the dashboard
+            window.location.href = "dashboard.html";
+        });
+
+        function showConfirmationDialog(platform) {
+            const confirmation = confirm(`Do you want to continue with ${platform}?`);
+            if (confirmation) {
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Sign-up process canceled.");
+            }
+        }
+
+        document.getElementById("googleButton").addEventListener("click", function () {
+            // Simulate Google sign-in process
+            alert("Redirecting to Google sign-in...");
+            showConfirmationDialog('Google');
+        });
+
+        document.getElementById("facebookButton").addEventListener("click", function () {
+            // Simulate Facebook sign-in process
+            alert("Redirecting to Facebook sign-in...");
+            showConfirmationDialog('Facebook');
+        });
+    </script>
+</body>
+</html>

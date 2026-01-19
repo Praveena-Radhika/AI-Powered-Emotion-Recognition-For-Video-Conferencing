@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Join Meeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a73e8, #673ab7);
+            color: rgb(12, 11, 11);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .join-meeting-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #0e0e0e;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .checkbox-container {
+            margin: 20px 0;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div>
+        <a href="#">SOLUTIONS</a>
+        <a href="#">JOIN A MEETING</a>
+        <a href="#">HOST A MEETING</a>
+    </div>
+    <div>
+        <a href="#">SIGN IN</a>
+        <a href="#">SIGN UP, IT'S FREE</a>
+    </div>
+</div>
+
+<div class="join-meeting-container">
+    <h1>Join a Meeting</h1>
+    <form action="/join_meeting" method="POST" onsubmit="return validateForm()">
+        <input type="text" name="meeting_id" placeholder="Enter Meeting ID" required>
+        <p>Your meeting ID is a 9, 10, or 11-digit number</p>
+        <div class="checkbox-container">
+            <input type="checkbox" id="humanCheck" required>
+            <label for="humanCheck">Verify you are a human</label>
+        </div>
+        <button type="submit">Join</button>
+    </form>
+</div>
+
+<div class="footer">
+    <p>Join a meeting from an H.323/SIP room system.</p>
+</div>
+
+<script>
+    function validateForm() {
+        const checkBox = document.getElementById("humanCheck");
+        if (!checkBox.checked) {
+            alert("Please verify you are a human.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</body>
+</html>
